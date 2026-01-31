@@ -147,4 +147,3 @@ People are tired.
 TDGS exists because sometimes you want to sit down, roll dice, and let the universe behave a little differently for a while.
 
 If you build something on this foundation, that is success.
-"# tdgs"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin https://github.com/TacticalDice/tdgs.git git push -u origin main
