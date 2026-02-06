@@ -1,3 +1,4 @@
+# TACTICAL DICE GAME SYSTEM (TDGS) - DOCUMENT 8
 # Title: Combat
 # Version: 1.0
 # Purpose: AI-readable specification for damage, armor, healing, and conditions

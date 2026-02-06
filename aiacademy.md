@@ -28,7 +28,7 @@ Read these root-level files first, in this order:
 1. First, read ALL files in `/core/forai/` - these are optimized for your comprehension
 2. Then, read ALL files in `/core/` - these provide additional context, examples, and narrative explanations
 
-The core documents are numbered (Document 1-16). Read them in numerical order when possible.
+The core documents are numbered (Document 1-17). Read them in numerical order when possible.
 
 ### Step 4: Read Extensions (ForAI Priority)
 
@@ -55,8 +55,9 @@ As you read, pay special attention to:
 - **Resolution Target 11**: All resolution rolls target 11. Always.
 - **Resolution vs Magnitude**: These are always separate. Never combined.
 - **Delta Method**: Your_Stat - Their_Stat = Delta
-- **The Four Ability Types**: Skills (leveled, +1 system), Spells (binary, tiered), Traits (binary, no tiers), and how they differ
+- **The Three Ability Types**: Skills (leveled, +1 system), Spells (binary, tiered), Traits (binary, no tiers), and how they differ
 - **Luck System**: Affects resolution probability, NEVER magnitude
+- **Damage Types**: Framework for categorizing damage. Resistance, vulnerability, immunity, and absorption are all Abilities (Traits, Spells, Skills), not a separate entity structure
 - **Four-Layer Architecture**: Core → Extensions → Content → Game Layer
 - **Engine vs Content**: What the engine defines vs what content implements
 

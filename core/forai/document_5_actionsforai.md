@@ -1,3 +1,4 @@
+# TACTICAL DICE GAME SYSTEM (TDGS) - DOCUMENT 5
 # Title: Action Taxonomy
 # Version: 1.0
 # Purpose: AI-readable specification for base actions

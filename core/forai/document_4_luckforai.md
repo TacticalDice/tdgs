@@ -1,3 +1,4 @@
+# TACTICAL DICE GAME SYSTEM (TDGS) - DOCUMENT 4
 # Title: Luck
 # Version: 1.0
 # Purpose: AI-readable specification for luck mechanics

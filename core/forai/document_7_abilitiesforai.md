@@ -1,3 +1,4 @@
+# TACTICAL DICE GAME SYSTEM (TDGS) - DOCUMENT 7
 # Title: Abilities
 # Version: 1.0
 # Purpose: AI-readable specification for Skills, Spells, and Traits
@@ -229,6 +230,9 @@ SKILL_TEMPLATE:
     APPLIES_TO: [Relevant actions | Universal]
   SCALING: [Default | Custom: define]
   UNLOCKS: [New capabilities at this tier]
+  DAMAGE (optional):
+    DAMAGE_TYPE: [Content-defined type]
+    DAMAGE_BONUS: [Flat | Dice | Both]
 
 SPELL_TEMPLATE:
   NAME: [Spell Name]
@@ -246,6 +250,9 @@ SPELL_TEMPLATE:
   RESOLUTION:
     YOUR_STAT: [INT | WIS]
     THEIR_STAT: [Target stat | Difficulty]
+  DAMAGE (optional):
+    DAMAGE_TYPE: [Content-defined type]
+    DAMAGE_VALUE: [Dice expression and/or flat value]
 
 TRAIT_TEMPLATE:
   NAME: [Trait Name]
@@ -255,6 +262,9 @@ TRAIT_TEMPLATE:
   DESCRIPTION: [What this trait does]
   EFFECT: [Fixed effect]
   REMOVED_WHEN: [Conditions] (optional)
+  DAMAGE (optional):
+    DAMAGE_TYPE: [Content-defined type]
+    DAMAGE_VALUE: [Fixed value | Dice | Bonus]
 
 ================================================================================
 STAT BONUS MECHANICS

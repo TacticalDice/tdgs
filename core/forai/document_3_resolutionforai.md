@@ -1,3 +1,4 @@
+# TACTICAL DICE GAME SYSTEM (TDGS) - DOCUMENT 3
 # Title: Resolution Mechanics
 # Version: 1.0
 # Purpose: AI-readable specification for action resolution

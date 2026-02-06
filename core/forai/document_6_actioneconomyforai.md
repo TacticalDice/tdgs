@@ -1,3 +1,4 @@
+# TACTICAL DICE GAME SYSTEM (TDGS) - DOCUMENT 6
 # Title: Action Economy
 # Version: 1.0
 # Purpose: AI-readable specification for timing, turns, and action structure

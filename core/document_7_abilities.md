@@ -369,6 +369,10 @@ SCALING:
 
 UNLOCKS AT TIER:
   [New capabilities this tier provides]
+
+DAMAGE (if any):
+  Damage Type: [Content-defined type, e.g. Fire, Slashing, etc.]
+  Damage Bonus: [Flat, dice, or both - added to relevant attacks]
 ```
 
 ### Spell Template
@@ -396,6 +400,10 @@ EFFECT:
 RESOLUTION:
   Your Stat: [INT or WIS]
   Their Stat: [Target's WIS, or Difficulty]
+
+DAMAGE (if any):
+  Damage Type: [Content-defined type, e.g. Fire, Cold, etc.]
+  Damage: [Dice expression and/or flat value, e.g. 2d6, 3d8+5]
 ```
 
 ### Trait Template
@@ -414,6 +422,10 @@ EFFECT:
 
 REMOVED WHEN:
   [Conditions under which this trait is lost, if any]
+
+DAMAGE (if any):
+  Damage Type: [Content-defined type, e.g. Fire, Slashing, etc.]
+  Damage: [Fixed value, dice, or bonus - as defined by the trait]
 ```
 
 ## Stat Bonuses in Detail

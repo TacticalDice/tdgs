@@ -1,4 +1,4 @@
-0*Document 13*
+*Document 13*
 
 # Character Creation
 
