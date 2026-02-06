@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.1.1 - 02/06/2026 Idiot Fixes Readme
+
+### Changed
+  - README.md file was updated to reflect changes made on the v1.1.0 release.
+
 ## v1.1.0 - 02/06/2026 Damage Types Added to Core
 
 ### Added
@@ -14,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Minor referencing mislabels fixed
   - Modified Templates for Skills, Spells, and Traits on Document 7 (Abilities), Non-breaking refinements.
   - Standardized ForAI document headers to one style
+  - AI Acedemy prompt has been updated to allow for doc 17 addition
 
 ## v1.0.0 - 01/29/2025 Initial Release
 

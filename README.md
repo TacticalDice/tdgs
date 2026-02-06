@@ -1,7 +1,7 @@
 # Tactical Dice Game System (TDGS)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/docs-tacticaldice.com-green.svg)](https://tacticaldice.com/docs/tdgs)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289da.svg)](https://discord.gg/tTpjN4hQVs)
 
@@ -99,10 +99,10 @@ Point your AI at the ForAI documents first. They exist for exactly this purpose.
 
 ## Current Status
 
-**Version 1.0.0** - Initial Release
+**Version 1.1.0**
 
 Core system complete:
-- 16 Core documents covering dice, stats, resolution, luck, actions, combat, entities, classes, races, progression, and more
+- 17 Core documents covering dice, stats, resolution, luck, actions, combat, damage types, entities, classes, races, progression, and more
 - 3 Extensions: Mounts & Vehicles, Crafting, Mass Combat
 - Full ForAI documentation for all specifications
 - Glossary with canonical definitions
