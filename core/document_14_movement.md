@@ -205,13 +205,6 @@ RESULT: The hostile gets one free melee attack against you
 
 This prevents cost-free disengagement. Position matters. Leaving melee has consequences.
 
-### Avoiding Opportunity Attacks
-
-Two ways to leave safely:
-
-**Step:** Your 1-square free action never triggers opportunity attacks. Small adjustment, always safe.
-
-**Disengage:** Spend your Action to Disengage. You can then move up to MOV without triggering opportunity attacks this turn. You're trading your attack for safe escape.
 
 ### Reach and Opportunity Attacks
 
@@ -299,7 +292,6 @@ You're not choosing to leave. You're being moved. There's a difference.
 |--------|----------|-------|
 | Move | Up to MOV squares | Costs Action |
 | Step | 1 square | Free action, no OA |
-| Disengage | Up to MOV squares | Costs Action, no OA |
 
 ### Terrain Effects
 
@@ -349,8 +341,6 @@ Simpler math means faster play. The geometric inaccuracy is a worthwhile trade f
 ### Why Opportunity Attacks?
 
 Without them, melee combatants get kited. Ranged attackers just walk away forever. Opportunity attacks create sticky melee engagement and make positioning matter.
-
-Step and Disengage provide escape options. The system creates tension, then gives you tools to manage it.
 
 ## Document Status
 

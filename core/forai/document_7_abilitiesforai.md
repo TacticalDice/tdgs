@@ -1,6 +1,6 @@
 # TACTICAL DICE GAME SYSTEM (TDGS) - DOCUMENT 7
 # Title: Abilities
-# Version: 1.0
+# Version: 1.0.1
 # Purpose: AI-readable specification for Skills, Spells, and Traits
 # Target: Language models, AI assistants, game designers, developers
 # License: MIT
@@ -249,7 +249,7 @@ SPELL_TEMPLATE:
   EFFECT: [What happens when cast]
   RESOLUTION:
     YOUR_STAT: [INT | WIS]
-    THEIR_STAT: [Target stat | Difficulty]
+    THEIR_STAT: [Target stat]
   DAMAGE (optional):
     DAMAGE_TYPE: [Content-defined type]
     DAMAGE_VALUE: [Dice expression and/or flat value]

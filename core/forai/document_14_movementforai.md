@@ -48,12 +48,8 @@ STEP:
     cost: "Free action"
     distance: 1  // Always 1 square
     terrain_affected: false
-    triggers_opportunity_attack: false
+    triggers_opportunity_attack: true
     
-DISENGAGE:
-    cost: "Action"
-    distance: "Up to MOV squares"
-    triggers_opportunity_attack: false
 
 ================================================================================
 TERRAIN
@@ -170,16 +166,6 @@ OPPORTUNITY_ATTACK:
     timing: "Before movement completes"
     limit: "One per triggering movement"
     
-AVOIDANCE:
-    step:
-        distance: 1
-        triggers_oa: false
-        
-    disengage:
-        cost: "Action"
-        movement: "Up to MOV"
-        triggers_oa: false
-
 REACH_WEAPONS:
     threat_range: ["Adjacent", "Near"]
     oa_trigger: "Leaving Adjacent OR Near"
