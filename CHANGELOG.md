@@ -5,10 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.2.0 - 02/09/2026 Difficulty Removed from Doc 7
+## v1.2.0 - 02/12/2026 Difficulty Removed from Doc 7
   - There was an issue with the ForAI version of doc 7
   where difficulty was the opposing stat. it should have been only opposing stat. Fixed.
   - Tightened attack of opportunity logic. 
+  - Tightened Stat Purchase Economy
   
 ## v1.1.1 - 02/06/2026 Idiot Fixes Readme
 
