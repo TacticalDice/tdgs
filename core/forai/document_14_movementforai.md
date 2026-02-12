@@ -283,8 +283,7 @@ DESIGN_PRINCIPLES:
     - Hybrid distance supports both grid and theater-of-mind
     - Diagonal costs 1 (gameplay > geometry)
     - Square is abstract unit; content defines scale
-    - Opportunity attacks create sticky melee engagement
-    - Step and Disengage provide escape options
+    - Opportunity attacks create sticky melee engagement    
     - Cover bonuses offset flanking bonuses (natural counters)
     - Forced movement never triggers OA (you're not choosing to leave)
     - Falling caps at 10d6 (terminal velocity)

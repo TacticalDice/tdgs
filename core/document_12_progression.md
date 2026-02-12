@@ -191,11 +191,12 @@ XP can also increase your base stats directly.
 
 | Current Stat | Cost for +1 |
 |--------------|-------------|
-| 1-10 | 50 XP |
-| 11-20 | 100 XP |
-| 21-30 | 200 XP |
-| 31-40 | 400 XP |
-| 41+ | 800 XP |
+| 1-5 | 50 XP |
+| 6-10 | 100 XP |
+| 11-20 | 300 XP |
+| 21-30 | 500 XP |
+| 31-40 | 800 XP |
+| 41+ | 1000 XP |
 
 Cost is based on your CURRENT stat value before the increase.
 

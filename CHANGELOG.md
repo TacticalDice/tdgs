@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - There was an issue with the ForAI version of doc 7
   where difficulty was the opposing stat. it should have been only opposing stat. Fixed.
   - Tightened attack of opportunity logic. 
-  - Tightened Stat Purchase Economy
-  
+  - Tightened Stat Purchase Economy.
+
 ## v1.1.1 - 02/06/2026 Idiot Fixes Readme
 
 ### Changed
