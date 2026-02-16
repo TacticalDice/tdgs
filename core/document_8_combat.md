@@ -347,24 +347,39 @@ Requires: Extended rest, typically overnight
 
 ### Healing Effects
 
-Spells, potions, and abilities that restore HP use **percentages**, not flat amounts.
+Spells, potions, and abilities that restore HP use **flat values**, not percentages. The healing formula mirrors the damage formula exactly.
 
 ```
-Heal Spell: Restore 20% HP
-Greater Heal: Restore 40% HP
-Healing Potion: Restore 15% HP
+Healing = Apparent Healer Stat + Spell Healing Bonus
+
+Divine Healing: Apparent WIS + Spell Healing Bonus
+Arcane Healing: Apparent INT + Spell Healing Bonus
 ```
 
-**Why percentages?** They scale automatically across power tiers.
+**Why flat values?** Damage is flat. A soldier with STR 12 and a +2 sword deals 14 damage whether they hit a peasant or a dragon. Healing follows the same logic. What the healer can do depends on the healer's capability, not the patient's body.
 
-| Target | Max HP | 20% Heal |
-|--------|--------|----------|
-| Peasant | 40 | +8 HP |
-| Soldier | 60 | +12 HP |
-| Dragon | 250 | +50 HP |
-| God | 500 | +100 HP |
+| Spell | Tier | WIS 10 Healer | WIS 20 Healer |
+|-------|------|---------------|---------------|
+| Minor Heal (WIS + 0) | 1 | 10 HP | 20 HP |
+| Heal (WIS + 5) | 2 | 15 HP | 25 HP |
+| Greater Heal (WIS + 10) | 3 | 20 HP | 30 HP |
+| Divine Restoration (WIS + 20) | 4 | 30 HP | 40 HP |
 
-The same spell works for everyone. No need for tiered healing lists.
+This means low-tier heals remain minor regardless of target. High-tier heals feel earned. Healer stats matter because WIS investment directly improves output, just as STR investment improves a fighter's damage.
+
+### Healing Potions and Items
+
+Healing items that have no caster use a fixed flat value with no stat component.
+
+```
+Potion Healing = Fixed Value (defined by item)
+
+Minor Healing Potion:   10 HP
+Healing Potion:         25 HP
+Greater Healing Potion: 50 HP
+```
+
+Content defines specific items and values. The engine defines that item healing is flat.
 
 ## Conditions
 
@@ -594,7 +609,7 @@ Source:     Spells, abilities, shields of faith
 
 ```
 Type:       Buff
-Effect:     Recover X% HP at start of each round (X defined by source)
+Effect:     Recover X HP at start of each round (X defined by source, flat value)
 Duration:   Rounds / Scene (defined by source)
 Stacking:   No (highest value wins)
 Source:     Spells, potions, abilities, certain creatures (innate)
@@ -654,7 +669,9 @@ Source:     Spells, potions, abilities
 |--------|----------|
 | Short Rest | 25% HP |
 | Long Rest | 100% HP |
-| Effects | Percentage-based (varies) |
+| Spell (Divine) | Apparent WIS + Spell Healing Bonus |
+| Spell (Arcane) | Apparent INT + Spell Healing Bonus |
+| Potion / Item | Fixed flat value (item-defined) |
 
 ### Core Conditions Quick Reference
 
@@ -683,7 +700,7 @@ Source:     Spells, potions, abilities
 | Invisible | Can't be seen, +4 attack, -4 to be hit |
 | Hasted | +2 REF, two Actions |
 | Protected | +2 REF, +10% deflection |
-| Regenerating | X% HP per round |
+| Regenerating | X HP per round (flat) |
 | [Stat] Buff | +2 to specific stat |
 
 ## Document Status

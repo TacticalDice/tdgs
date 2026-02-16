@@ -24,6 +24,7 @@ ABLATIVE_CAP: None
 
 ARMOR_STACK_ORDER: Ablative_First → Deflection_Second
 
+HEALING_SPELL: Apparent_Healer_Stat + Spell_Healing_Bonus
 HEALING_SHORT_REST: 25% Max HP
 HEALING_LONG_REST: 100% Max HP
 
@@ -268,23 +269,55 @@ REST:
   Long Rest (hours/sleep): Recover 100% Max HP
     - Requires: Extended rest, typically overnight
 
-HEALING_EFFECTS:
-  All healing uses PERCENTAGES, not flat amounts
-  
-  Examples:
-    Heal Spell: 20% HP
-    Greater Heal: 40% HP
-    Healing Potion: 15% HP
+  Rest healing is percentage-based. No healer involved.
 
-WHY_PERCENTAGES:
-  Scales automatically across power tiers
+HEALING_EFFECTS:
+  Spells and abilities use FLAT values, not percentages.
   
-  Target   | Max HP | 20% Heal
-  ---------|--------|----------
-  Peasant  | 40     | +8 HP
-  Soldier  | 60     | +12 HP
-  Dragon   | 250    | +50 HP
-  God      | 500    | +100 HP
+  FORMULA:
+    Healing = Apparent_Healer_Stat + Spell_Healing_Bonus
+
+  MIRRORS: Damage formula (Apparent_Stat + Weapon_Damage_Bonus)
+
+  HEALER_STAT:
+    Divine healing: WIS
+    Arcane healing: INT
+    Content may define others
+
+  SPELL_HEALING_BONUS:
+    Defined per spell/ability by content
+    Higher tier = higher bonus
+    Same design as weapon damage bonus
+
+  EXAMPLE_SPELLS (content defines specifics):
+    Spell                | Tier | Healing Bonus
+    ---------------------|------|---------------
+    Minor Heal           | 1    | +0
+    Heal                 | 2    | +5
+    Greater Heal         | 3    | +10
+    Divine Restoration   | 4    | +20
+
+  EXAMPLE_CALCULATIONS:
+    Healer     | Stat    | Spell        | Bonus | Healing
+    -----------|---------|--------------|-------|--------
+    Acolyte    | WIS 10  | Minor Heal   | +0    | 10
+    Cleric     | WIS 15  | Heal         | +5    | 20
+    High Priest| WIS 20  | Greater Heal | +10   | 30
+    Saint      | WIS 30  | Divine Rest. | +20   | 50
+
+HEALING_ITEMS:
+  Items with no caster use fixed flat values.
+  No stat contribution.
+  
+  FORMULA:
+    Potion Healing = Fixed Value (item-defined)
+
+  EXAMPLE_ITEMS (content defines specifics):
+    Item                  | Healing
+    ----------------------|--------
+    Minor Healing Potion  | 10
+    Healing Potion        | 25
+    Greater Healing Potion| 50
 
 ================================================================================
 CONDITIONS FRAMEWORK
@@ -400,9 +433,9 @@ PROTECTED:
   Stacking: No
 
 REGENERATING:
-  Effect: Recover X% HP at start of each round (X = source-defined)
+  Effect: Recover X HP at start of each round (X = flat, source-defined)
   Duration: Rounds/Scene (source-defined)
-  Stacking: No (highest wins)
+  Stacking: No (highest value wins)
 
 STAT_BUFFS:
   Pattern: +2 to [STAT]
@@ -469,9 +502,20 @@ function check_hp_state(entity):
     else:
         return "ACTIVE"
 
-function apply_healing(target, heal_percentage):
-    heal_amount = floor(target.max_hp * heal_percentage)
+function apply_healing(target, healer, spell):
+    if spell.type == "divine":
+        base = healer.apparent_wis
+    elif spell.type == "arcane":
+        base = healer.apparent_int
+    
+    heal_amount = base + spell.healing_bonus
     target.current_hp = min(target.current_hp + heal_amount, target.max_hp)
+    
+    if target.current_hp > target.knockout_threshold:
+        remove_condition(target, "Unconscious")
+
+function apply_potion_healing(target, potion):
+    target.current_hp = min(target.current_hp + potion.flat_healing, target.max_hp)
     
     if target.current_hp > target.knockout_threshold:
         remove_condition(target, "Unconscious")
@@ -689,13 +733,15 @@ export default function TDGSCombatForAIPage() {
             <thead>
               <tr>
                 <th style={styles.th}>Method</th>
-                <th style={styles.th}>Recovery</th>
+                <th style={styles.th}>Formula</th>
               </tr>
             </thead>
             <tbody>
               <tr><td style={styles.td}>Short Rest</td><td style={styles.td}>25% Max HP</td></tr>
               <tr><td style={styles.td}>Long Rest</td><td style={styles.td}>100% Max HP</td></tr>
-              <tr><td style={styles.td}>Effects</td><td style={styles.td}>Percentage-based</td></tr>
+              <tr><td style={styles.td}>Spell (Divine)</td><td style={styles.td}>Apparent WIS + Spell Healing Bonus</td></tr>
+              <tr><td style={styles.td}>Spell (Arcane)</td><td style={styles.td}>Apparent INT + Spell Healing Bonus</td></tr>
+              <tr><td style={styles.td}>Potion / Item</td><td style={styles.td}>Fixed flat value (item-defined)</td></tr>
             </tbody>
           </table>
         </section>
@@ -737,7 +783,7 @@ export default function TDGSCombatForAIPage() {
               <tr><td style={styles.td}>Invisible</td><td style={styles.td}>+4 attack, -4 to be hit</td></tr>
               <tr><td style={styles.td}>Hasted</td><td style={styles.td}>+2 REF, two Actions</td></tr>
               <tr><td style={styles.td}>Protected</td><td style={styles.td}>+2 REF, +10% deflection</td></tr>
-              <tr><td style={styles.td}>Regenerating</td><td style={styles.td}>X% HP per round</td></tr>
+              <tr><td style={styles.td}>Regenerating</td><td style={styles.td}>X HP per round (flat, source-defined)</td></tr>
               <tr><td style={styles.td}>[Stat] Buff</td><td style={styles.td}>+2 to specific stat</td></tr>
             </tbody>
           </table>

@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v2.0.0 - 02/16/2026
+  - BREAKING CHANGE: Healing was wildly unbalanced for healers. Healing in Document 8 has been redefined for better game balance. Wasn't expecting a major version change this early, but the inbalance was just too much to patch without core rule changes. (Document 8)
+  - Group Experience: For table top the "No Group Penalty" rule was found to be sufficient. Breaks in online play and was found to faciliate wildly overpowered power leveling, destroying the balance of the game. Group Experience has been revised so that both tabletop play and digital play is balanced. (Document 12)
+  - Progression: Progression was found to be too fast for online/MUD play. Players on tabletop's naturally human pace for combat resolution is much slower. Tweaked progression to accomodate both. (Document 12)
+
 ## v1.2.0 - 02/12/2026 Difficulty Removed from Doc 7
   - There was an issue with the ForAI version of doc 7
   where difficulty was the opposing stat. it should have been only opposing stat. Fixed.

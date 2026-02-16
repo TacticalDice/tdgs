@@ -130,16 +130,56 @@ Failure teaches, but only if you survive to learn from it.
 
 **Survival required:** You must survive the failure. The ones who didn't survive? They learned nothing.
 
-## No Group Penalty
+## Group XP Rules
 
-TDGS has no group XP penalty. Here's why:
+XP remains based on Personal Difficulty. In group encounters, each character's XP is adjusted by a group-size multiplier, and only characters who meaningfully participated are eligible.
 
-- **Personal Difficulty already differentiates.** The warrior finds the goblin trivial (3 XP). The wizard finds it challenging (25 XP). Same fight, different growth.
-- **Positional advantages already reduce Difficulty.** Flanking grants +2, surrounded grants +4. These reduce your Difficulty naturally.
-- **Large groups have real-world costs.** Scheduling, slow combat, split spotlight. The game doesn't need to punish you mechanically too.
-- **Solo players aren't punished.** Playing alone is already harder. Why make it worse?
-- **Transparency and player agency.** Every player calculates their own XP. No hidden math.
-- **Simplicity.** One system. The Difficulty Spectrum handles everything.
+### Participation Gate
+
+A character is eligible for XP if they performed **at least one** of the following during the encounter:
+
+1. **Combat Engagement:** Initiated or was the target of at least one resolution roll against the enemy. This is the primary gate. Standing in the room while someone else fights does not qualify. You must have entered the resolution system.
+2. **Support:** Provided healing or mitigation to a character who is eligible under another category. Healers earn XP by supporting real combatants. A carry cannot heal another carry to create mutual eligibility.
+3. **Objective:** Spent an action that directly advanced the win condition (objective progress, puzzle interaction, etc.).
+
+Characters who do not meet any participation category receive **0 XP** for that encounter.
+
+### Group Size Multiplier
+
+When multiple eligible characters participate in an encounter, each character's Personal XP is multiplied by a group-size factor reflecting shared effort.
+
+| Eligible Players | Multiplier | Example (60 Personal XP) |
+|------------------|------------|--------------------------|
+| 1 | 1.00 | 60 XP |
+| 2 | 0.80 | 48 XP |
+| 3 | 0.67 | 40 XP |
+| 4 | 0.57 | 34 XP |
+| 5 | 0.50 | 30 XP |
+| 6 | 0.44 | 26 XP |
+| 7 | 0.40 | 24 XP |
+| 8 | 0.36 | 21 XP |
+
+```
+XP_award = floor(Personal_XP × GroupMultiplier)
+If Personal_XP > 0 and XP_award rounds to 0, award 1 XP instead.
+```
+
+### Group XP Calculation
+
+1. Determine eligible contributors (participation gate above).
+2. For each eligible character, compute Personal XP normally from Difficulty Spectrum.
+3. Look up the group-size multiplier for the number of eligible characters.
+4. Each eligible character's award = floor(Personal_XP × GroupMultiplier).
+5. Non-eligible characters receive 0 XP.
+
+Each player still calculates their own XP based on their own Personal Difficulty. There is no cap, no averaging, and no penalty based on other group members' stats.
+
+### Why This Works
+
+- **Powerleveling is dead.** A carry standing idle cannot enter the resolution system against enemies far above their stats. They fail the participation gate and earn nothing.
+- **Mixed-level groups work.** A level 15 and a level 20 fighting together both earn their own Personal XP, adjusted only by the group multiplier. The lower-level player is not punished for grouping with a stronger ally.
+- **Healers are covered.** Support eligibility is earned by healing or mitigating for someone who engaged in combat. No special-case rules needed.
+- **Personal Difficulty preserved.** Your XP reflects your relationship to the challenge, not the weakest member's.
 
 ### Luck and XP
 
@@ -155,33 +195,38 @@ XP buys class levels. The cost depends on how high you're climbing.
 
 ### Leveling Cost Brackets
 
-| Bracket | Levels | XP per Level |
-|---------|--------|--------------|
-| Novice | 1-20 | 50 |
-| Journeyman | 21-40 | 100 |
-| Veteran | 41-60 | 200 |
-| Master | 61-80 | 400 |
-| Legend | 81-100 | 1,500 |
+| Current Level | XP per Level |
+|---------------|--------------|
+| 1-5 | 80 |
+| 6-10 | 160 |
+| 11-15 | 280 |
+| 16-20 | 500 |
+| 21-30 | 800 |
+| 31-40 | 1,200 |
+| 41-50 | 2,000 |
+| 51-60 | 3,500 |
+| 61-70 | 6,000 |
+| 71-80 | 10,000 |
+| 81-90 | 16,000 |
+| 91-100 | 25,000 |
 
 ### Cumulative Totals (Single Class)
 
-| Level | Total XP | Typical Timeline |
-|-------|----------|------------------|
-| 20 | 1,000 | ~20 sessions |
-| 40 | 3,000 | ~60 sessions (~1 year) |
-| 60 | 7,000 | ~140 sessions (~3 years) |
-| 80 | 15,000 | ~300 sessions (~6 years) |
-| 100 | 45,000 | ~900 sessions (~17 years) |
+| Level | Total XP | Moderate Encounters (~15 XP) |
+|-------|----------|------------------------------|
+| 20 | 4,600 | ~307 |
+| 40 | 23,900 | ~1,593 |
+| 60 | 76,600 | ~5,107 |
+| 80 | 230,100 | ~15,340 |
+| 100 | 625,100 | ~41,673 |
 
-These assume ~50 XP per session on average. Your table will vary.
+Encounter density varies enormously between tabletop and digital. A tabletop session might see 10-20 encounters. A MUD session might see 100+. The curve is designed to feel responsive early and long-term late regardless of deployment context.
 
-### The Legend Wall
+### The Escalating Wall
 
-Notice the jump from Master (400 XP/level) to Legend (1,500 XP/level).
+The cost curve is continuous and exponential. There is no single wall. Every bracket costs more than the last, and the ratio keeps climbing.
 
-This is intentional.
-
-Crossing into Legend is transcendence, not progression. Most characters will never reach it. That's the point. Level 80 is mastery. Level 81 is something else entirely.
+At Level 80, a single level costs 10,000 XP. At Level 91, it costs 25,000. Most characters will never reach the highest tiers. That's the point. The math filters naturally.
 
 ## Stat Increases
 
@@ -203,9 +248,9 @@ Cost is based on your CURRENT stat value before the increase.
 **Example:**
 
 ```
-STR 10 → 11 costs 100 XP (entering 11-20 bracket)
-STR 20 → 21 costs 200 XP (entering 21-30 bracket)
-STR 30 → 31 costs 400 XP (entering 31-40 bracket)
+STR 10 → 11 costs 100 XP (current stat in 6-10 bracket)
+STR 20 → 21 costs 300 XP (current stat in 11-20 bracket)
+STR 30 → 31 costs 500 XP (current stat in 21-30 bracket)
 ```
 
 ### Soft Cap
@@ -215,13 +260,13 @@ There is no hard cap on stats. The escalating cost IS the cap.
 **Example: Raising STR from 10 to 40**
 
 ```
-10→20: ~1,000 XP
-20→30: 2,000 XP
-30→40: 4,000 XP
-Total: ~7,000 XP
+10→20: ~2,800 XP
+20→30: ~4,800 XP
+30→40: ~7,700 XP
+Total: ~15,300 XP
 ```
 
-That's roughly the same XP as reaching Level 60. The math limits you naturally.
+That's roughly the same XP as reaching Level 32. The math limits you naturally.
 
 ### The Stats-Only Trap
 
@@ -250,7 +295,7 @@ XP purchases exactly two things:
 
 ### 1. Class Levels
 
-Each level costs XP based on its bracket. Level 15 costs 50 XP (Novice). Level 45 costs 200 XP (Veteran).
+Each level costs XP based on its bracket. Level 15 costs 280 XP. Level 45 costs 2,000 XP.
 
 Class levels grant:
 
@@ -295,8 +340,8 @@ Each class tracks its own level. Costs are based on level in THAT class.
 ```
 Character: Fighter 25 / Mage 5
 
-Next Fighter level (26): 100 XP (Journeyman bracket)
-Next Mage level (6): 50 XP (Novice bracket)
+Next Fighter level (26): 800 XP (21-30 bracket)
+Next Mage level (6): 80 XP (1-5 bracket)
 ```
 
 ### Level 1 Exception
@@ -371,23 +416,31 @@ Bonus XP is gravy. The Difficulty Spectrum is the meal.
 
 ### Leveling Costs
 
-| Bracket | Levels | XP/Level |
-|---------|--------|----------|
-| Novice | 1-20 | 50 |
-| Journeyman | 21-40 | 100 |
-| Veteran | 41-60 | 200 |
-| Master | 61-80 | 400 |
-| Legend | 81-100 | 1,500 |
+| Current Level | XP/Level |
+|---------------|----------|
+| 1-5 | 80 |
+| 6-10 | 160 |
+| 11-15 | 280 |
+| 16-20 | 500 |
+| 21-30 | 800 |
+| 31-40 | 1,200 |
+| 41-50 | 2,000 |
+| 51-60 | 3,500 |
+| 61-70 | 6,000 |
+| 71-80 | 10,000 |
+| 81-90 | 16,000 |
+| 91-100 | 25,000 |
 
 ### Stat Increase Costs
 
 | Current Stat | Cost for +1 |
 |--------------|-------------|
-| 1-10 | 50 XP |
-| 11-20 | 100 XP |
-| 21-30 | 200 XP |
-| 31-40 | 400 XP |
-| 41+ | 800 XP |
+| 1-5 | 50 XP |
+| 6-10 | 100 XP |
+| 11-20 | 300 XP |
+| 21-30 | 500 XP |
+| 31-40 | 800 XP |
+| 41+ | 1,000 XP |
 
 
 ## Document Status
